@@ -1,0 +1,40 @@
+bool solve(string str1,string str2)
+{
+    int cnt = 0;
+    vector<int>vec;
+    for(int i = 0 ; i < str1.size() ; i++)
+    {
+        if(str1[i] != str2[i])
+        {
+            vec.push_back(i);
+            cnt++;
+            if(cnt > 2)
+            {
+                return false;
+            }
+        }
+    }
+    if(cnt == 1)
+    {
+        return false;
+    }
+
+    char temp = str2[vec[0]];
+    str2[vec[0]] = str2[vec[1]];
+    str2[vec[1]] = temp;
+
+    if(str1 == str2)
+    {
+        return true;
+    }
+    return false;
+}
+
+bool areAlmostEqual(string s1, string s2)
+{
+    if(s1 == s2)
+    {
+        return true;
+    }
+    return solve(s1,s2);
+}
