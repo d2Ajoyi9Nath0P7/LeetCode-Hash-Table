@@ -1,0 +1,22 @@
+bool isAnagram(string s, string t)
+{
+    vector<int>index_s(26,0);
+    for(int i = 0; i < s.size() ; i++)
+    {
+        index_s[s[i]-'a']++;
+    }
+    vector<int>index_t(26,0);
+    for(int i = 0; i < t.size() ; i++)
+    {
+        index_t[t[i]-'a']++;
+    }
+
+    for(int i = 0 ; i < 26 ; i++)
+    {
+        if(index_s[i] != index_t[i])
+        {
+            return false;
+        }
+    }
+    return true;
+}
