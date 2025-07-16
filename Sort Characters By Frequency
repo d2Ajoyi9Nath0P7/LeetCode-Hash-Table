@@ -1,0 +1,28 @@
+string frequencySort(string s)
+{
+    string str ; //O(1)
+    map<char,int>mp;//
+    for(int i = 0 ; i < s.size(); i++)
+    {
+        mp[s[i]]++;
+    }
+    priority_queue<pair<int,char>>pq;
+    for(auto it : mp)
+    {
+        pq.push({it.second,it.first});
+    }
+
+    while(!pq.empty())
+    {
+        int x = pq.top().first;
+        int ch = pq.top().second;
+
+        for(int i = 0 ; i < x ; i++)
+        {
+            str.push_back(ch);
+        }
+        pq.pop();
+    }
+
+    return str;
+}
